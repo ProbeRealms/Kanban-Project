@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -9,8 +10,12 @@ const {logger} = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorhandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 
+// Connect to mongoDB
+connectDB();
 
 // custom middleware logger
 app.use(logger);
@@ -39,7 +44,16 @@ app.use('/auth', require('./routes/auth'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 
+// // Add this simple test route
+// app.get('/api/test', (req, res) => {
+//     res.json({ message: "Connection successful! Backend is talking to Frontend." });
+// });
+
+// mongodb+srv://muhammadalee2006_db_user:<db_password>@cluster0.bemhqo6.mongodb.net/?appName=Cluster0
+
+
 app.use(verifyJWT);
+app.use('/tasks', require('./routes/api/tasks'));
 app.use('/employees', require('./routes/api/employees'));
 
 
@@ -56,5 +70,7 @@ app.all(/.*/, (req, res) => {
 
 app.use(errorHandler);
 
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB!');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+})

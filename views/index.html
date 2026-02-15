@@ -3,10 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kanban Board</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1> Index </h1>
+    <nav class="navbar">
+        <h1>Kanban Board</h1>
+        <div class="user-info">
+            <span>Welcome, User</span>
+            <a href="/logout" class="btn-logout">Logout</a>
+        </div>
+    </nav>
+
+    <main class="board">
+        <div class="column">
+            <div class="column-header">
+                <h2>To Do</h2>
+                <span class="count">2</span>
+            </div>
+            <div class="task-list" id="todo-list">
+                <div class="card">
+                    <p class="card-title">Design DB Schema</p>
+                    <div class="card-footer">
+                        <span class="tag tag-design">Design</span>
+                    </div>
+                </div>
+                 <div class="card">
+                    <p class="card-title">Setup MongoDB</p>
+                    <div class="card-footer">
+                        <span class="tag tag-backend">Backend</span>
+                    </div>
+                </div>
+            </div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+
+        <div class="column">
+            <div class="column-header">
+                <h2>In Progress</h2>
+                <span class="count">1</span>
+            </div>
+            <div class="task-list" id="inprogress-list">
+                <div class="card">
+                    <p class="card-title">Create UI Layout</p>
+                    <div class="card-footer">
+                        <span class="tag tag-frontend">Frontend</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="column-header">
+                <h2>Done</h2>
+                <span class="count">1</span>
+            </div>
+            <div class="task-list" id="done-list">
+                <div class="card">
+                    <p class="card-title">Initialize Repo</p>
+                    <div class="card-footer">
+                        <span class="tag tag-devops">DevOps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

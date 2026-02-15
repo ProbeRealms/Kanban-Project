@@ -2,13 +2,142 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-size: 36px;
-    min-height: 100vh;
+    background-color: #2c2c2c; /* Dark background matching your preference */
     color: #fff;
-    background-color: #000;
-    display: grid;
-    place-content: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1f1f1f;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.btn-logout {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+/* Board Layout */
+.board {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    overflow-x: auto; /* Allows scrolling if many columns */
+    height: calc(100vh - 70px);
+    align-items: flex-start;
+}
+
+/* Columns */
+.column {
+    background-color: #1f1f1f;
+    min-width: 300px;
+    width: 300px;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+.column-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.count {
+    background-color: #333;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* Tasks / Cards */
+.task-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 50px; /* Drop zone area */
+}
+
+.card {
+    background-color: #383838;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    background-color: #404040;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Tags */
+.card-footer {
+    display: flex;
+    gap: 5px;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tag-design { background-color: #e67e22; color: white; }
+.tag-backend { background-color: #3498db; color: white; }
+.tag-frontend { background-color: #9b59b6; color: white; }
+.tag-devops { background-color: #2ecc71; color: white; }
+
+/* Add Button */
+.add-task-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border: 1px dashed #555;
+    color: #888;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.add-task-btn:hover {
+    background-color: #333;
+    color: #fff;
 }
